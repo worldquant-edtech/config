@@ -1,0 +1,5 @@
+{
+  "extends": ["tslint:recommended", "tslint-config-prettier"],
+  // apply the same rules for any JS if allowJS is gonna be used
+  "jsRules": true
+}
