@@ -1,6 +1,6 @@
 {
   "name": "@kaareal/config",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Configurations for node",
   "keywords": [
     "config",
@@ -26,9 +26,6 @@
     "build": "tsc",
     "test": "jest",
     "prerelease": "npm run build"
-  },
-  "peerDependencies": {
-    "tslib": ">=1.9.3"
   },
   "dependencies": {},
   "devDependencies": {
