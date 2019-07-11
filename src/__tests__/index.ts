@@ -19,7 +19,7 @@ describe('get', () => {
   });
 
   it('get empty', () => {
-    expect(() => get('EMPTY')).toThrow('Configuration variable "EMPTY" was defined but no value was provided');
+    expect(get('EMPTY')).toEqual(null);
   });
 
   it('not defined key', () => {

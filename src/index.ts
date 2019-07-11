@@ -10,7 +10,7 @@ let emptyKeys: [string?];
 try {
   [parsed, emptyKeys] = parse(fs.readFileSync(configPath, { encoding: 'utf8' }));
 } catch (e) {
-  console.log(configPath);
+  console.error(`Failed to parse env.conf (${configPath})`);
   throw e;
 }
 
@@ -19,7 +19,7 @@ if (process.env.NODE_ENV && process.env.NODE_ENV.toUpperCase() === 'PRODUCTION')
     return !(process.env[key] && process.env[key].length);
   });
   if (missingValues.length) {
-    throw new Error(`Missing Enviroment Variables: The following variables are required (${missingValues.join(', ')})`);
+    console.error(`Missing Enviroment Variables: The following variables are required (${missingValues.join(', ')})`);
   }
 }
 
@@ -42,7 +42,8 @@ export function get(variable: string, as = 'string'): string | number | boolean 
 
   const value = process.env[variable] || parsed.get(variable);
   if (value === null) {
-    throw Error(`Configuration variable "${variable}" was defined but no value was provided`);
+    console.warn(`Configuration variable "${variable}" was defined but no value was provided`);
+    return null;
   }
 
   if (value === undefined) {

@@ -1,4 +1,6 @@
-# config
+# @kaareal/config
+
+[![CircleCI](https://circleci.com/gh/kaareal/config/tree/master.svg?style=svg)](https://circleci.com/gh/kaareal/config/tree/master)
 
 ## Install
 
@@ -24,7 +26,6 @@ START_DATE=2019-01-30T10:00:48.185Z
 ```
 
 Its recommended to define all variables in the env.conf file, even if empty.
-In production (NODE_ENV=PRODUCTION) empty values will throw if values are not provided via `process.env`
 
 ```javascript
 const config = require('@kaareal/config');
@@ -47,7 +48,7 @@ if (config.get('START_DATE', 'date') < Date.now() && config.has('SENTRY_API')) {
 
 Default: `config.get('DB_HOST', "string"): string`
 
-Return the value of the variable or throws if the variable is not defined in the env.conf or available via `process.env`.
+Return the value of the variable or warn if the variable is not defined in the env.conf or available via `process.env`.
 
 `config.get(variable, as = "string" | "boolean" | "json" | "integer" | "float" | "date"): string | number | boolean | Date | any`
 

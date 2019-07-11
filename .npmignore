@@ -3,6 +3,8 @@ tsconfig.json
 tslint.json
 .editorconfig
 yarn.lock
+.circleci
+.vscode
 
 # build scripts
 config/
