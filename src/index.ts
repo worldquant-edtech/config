@@ -41,11 +41,6 @@ export function get(variable: string, as = 'string'): string | number | boolean 
   }
 
   const value = process.env[variable] || parsed.get(variable);
-  if (value === null) {
-    console.warn(`Configuration variable "${variable}" was defined but no value was provided`);
-    return null;
-  }
-
   if (value === undefined) {
     throw Error(
       `Configuration variable "${variable}" is not exposed as enviroment variable nor was a default provided in \`env.conf\``
