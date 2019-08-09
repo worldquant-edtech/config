@@ -34,12 +34,6 @@ export function get(variable: string, as = 'string'): string | number | boolean 
     throw new Error('Calling get with null or undefined argument');
   }
 
-  if (!parsed.has(variable)) {
-    console.warn(
-      `config.get(${variable}) was not defined in the \`env.conf\`, its recommended to define all keys (leave blank if no value)`
-    );
-  }
-
   const value = process.env[variable] || parsed.get(variable);
   if (value === undefined) {
     throw Error(
@@ -57,11 +51,11 @@ export function get(variable: string, as = 'string'): string | number | boolean 
   throw Error(`Unknown formatting config.get(${variable}, ${as})`);
 }
 
-export function getAll() {
+export function getAll(onlyParsed = false): { [key: string]: string } {
   const result: { [key: string]: string } = {};
   const keys = parsed.keys();
   for (const key of keys) {
-    const value = process.env[key] || parsed.get(key);
+    const value = onlyParsed ? parsed.get(key) : process.env[key] || parsed.get(key);
     result[key] = value;
   }
   return result;

@@ -44,15 +44,20 @@ if (config.get('START_DATE', 'date') < Date.now() && config.has('SENTRY_API')) {
 
 ### Methods
 
-#### GET
+#### get
 
 Default: `config.get('DB_HOST', "string"): string`
 
 Return the value of the variable or warn if the variable is not defined in the env.conf or available via `process.env`.
 
-`config.get(variable, as = "string" | "boolean" | "json" | "integer" | "float" | "date"): string | number | boolean | Date | any`
+```
+config.get(
+  variable,
+  as: "string" | "boolean" | "json" | "integer" | "float" | "date"
+): string | number | boolean | Date | any
+```
 
-#### HAS
+#### has
 
 Default: `config.has('DB_HOST'): boolean`
 
@@ -60,9 +65,9 @@ Returns true if the variable got value
 
 #### getAll
 
-Default: `config.getAll(): {[key: string]: string}`
+Default: `config.getAll(onlyParsed=false): {[key: string]: string}`
 
-Return all defined (both from process.env and env.conf merged) keys and values as a key value object
+Return all defined (both from process.env and env.conf merged) keys and values as a key value object, or only from env.conf if onlyParsed is set to true.
 
 #### Environment variable ENV_CONF_PATH
 
