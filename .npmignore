@@ -5,6 +5,7 @@ tslint.json
 yarn.lock
 .circleci
 .vscode
+.eslintrc.js
 
 # build scripts
 config/
