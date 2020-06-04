@@ -1,15 +1,9 @@
-# @kaareal/config
-
-[![CircleCI](https://circleci.com/gh/kaareal/config/tree/master.svg?style=svg)](https://circleci.com/gh/kaareal/config/tree/master)
+# @bedrockio/config
 
 ## Install
 
 ```bash
-# with npm
-npm install @kaareal/config
-
-# or with Yarn
-yarn add @kaareal/config
+npm install @bedrockio/config
 ```
 
 ## Usage
@@ -28,7 +22,7 @@ START_DATE=2019-01-30T10:00:48.185Z
 Its recommended to define all variables in the env.conf file, even if empty.
 
 ```javascript
-const config = require('@kaareal/config');
+const config = require('@bedrockio/config');
 db.connect({
   host: config.get('DB_HOST'),
   port: config.get('DB_PORT', 'integer')
