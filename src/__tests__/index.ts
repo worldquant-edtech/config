@@ -1,6 +1,6 @@
 import path = require('path');
 
-process.env.ENV_CONF_PATH = path.join(__dirname, 'env.conf');
+process.env.ENV_CONFIG_PATH = path.join(__dirname, '.env');
 
 import { getAll, get, has } from '../index';
 
@@ -24,7 +24,7 @@ describe('get', () => {
 
   it('not defined key', () => {
     expect(() => get('BAD_VALUE')).toThrow(
-      'Configuration variable "BAD_VALUE" is not exposed as enviroment variable nor was a default provided in `env.conf`'
+      'Configuration variable "BAD_VALUE" is not exposed as enviroment variable nor was a default provided in `.env`'
     );
   });
 
@@ -46,7 +46,7 @@ describe('get', () => {
 
   it('get value as json', () => {
     expect(get('RETAIN_INNER_QUOTES', 'json')).toEqual({
-      foo: 'bar'
+      foo: 'bar',
     });
   });
 });

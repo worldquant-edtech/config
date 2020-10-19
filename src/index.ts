@@ -1,26 +1,17 @@
 import { parse } from './parse';
-import fs = require('fs');
-import path = require('path');
+import { readFileSync } from 'fs';
+import path from 'path';
 
-const configPath = process.env.ENV_CONF_PATH || path.resolve(process.cwd(), 'env.conf');
+const configPath = process.env.ENV_CONFIG_PATH || path.resolve(process.cwd(), '.env');
 
 let parsed: Map<string, string>;
 let emptyKeys: [string?];
 
 try {
-  [parsed, emptyKeys] = parse(fs.readFileSync(configPath, { encoding: 'utf8' }));
+  [parsed, emptyKeys] = parse(readFileSync(configPath, { encoding: 'utf8' }));
 } catch (e) {
-  console.error(`Failed to parse env.conf (${configPath})`);
+  console.error(`Failed to parse .env (${configPath})`);
   throw e;
-}
-
-if (process.env.NODE_ENV && process.env.NODE_ENV.toUpperCase() === 'PRODUCTION') {
-  const missingValues = emptyKeys.filter((key) => {
-    return !(process.env[key] && process.env[key].length);
-  });
-  if (missingValues.length) {
-    console.error(`Missing Enviroment Variables: The following variables are required (${missingValues.join(', ')})`);
-  }
 }
 
 export function get(variable: string): string;
@@ -37,7 +28,7 @@ export function get(variable: string, as = 'string'): string | number | boolean 
   const value = process.env[variable] || parsed.get(variable);
   if (value === undefined) {
     throw Error(
-      `Configuration variable "${variable}" is not exposed as enviroment variable nor was a default provided in \`env.conf\``
+      `Configuration variable "${variable}" is not exposed as enviroment variable nor was a default provided in \`.env\``
     );
   }
 
