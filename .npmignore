@@ -11,7 +11,7 @@ yarn.lock
 config/
 
 # Test files
-__tests__
+**/__tests__
 
 # Sources
 node_modules
