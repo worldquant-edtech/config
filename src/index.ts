@@ -1,6 +1,6 @@
-import { parse } from './parse';
-import { readFileSync } from 'fs';
-import path from 'path';
+const { parse } = require('./parse');
+const { readFileSync } = require('fs');
+const path = require('path');
 
 const configPath = process.env.ENV_CONFIG_PATH || path.resolve(process.cwd(), '.env');
 

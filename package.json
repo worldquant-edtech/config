@@ -1,6 +1,6 @@
 {
   "name": "@bedrockio/config",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Configurations for node",
   "keywords": [
     "config",
@@ -24,7 +24,7 @@
     "cleanup": "rm -rf lib && rm -rf types",
     "prebuild": "npm run cleanup",
     "build": "tsc",
-    "test": "jest",
+    "test": "npm run build && jest",
     "prerelease": "npm run build"
   },
   "dependencies": {},
@@ -36,7 +36,6 @@
     "eslint": "^7.11.0",
     "jest": "26.0.1",
     "prettier": "2.0.5",
-    "ts-jest": "26.1.0",
     "tslint-config-prettier": "1.18.0",
     "typescript": "3.9.5"
   },
@@ -47,9 +46,8 @@
   },
   "jest": {
     "verbose": true,
-    "preset": "ts-jest",
     "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.ts?(x)"
+      "<rootDir>/lib/**/__tests__/**/*.js"
     ]
   }
 }

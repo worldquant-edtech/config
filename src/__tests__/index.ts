@@ -1,6 +1,6 @@
-import path = require('path');
+const path = require('path');
 
-process.env.ENV_CONFIG_PATH = path.join(__dirname, '.env');
+process.env.ENV_CONFIG_PATH = path.join(__dirname, '../../fixtures/.env');
 
 import { getAll, get, has } from '../index';
 

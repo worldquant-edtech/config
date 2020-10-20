@@ -2,7 +2,7 @@ const { parse } = require('../parse');
 const fs = require('fs');
 const path = require('path');
 
-const [parsed, emptyKeys] = parse(fs.readFileSync(path.join(__dirname, '.env'), { encoding: 'utf8' }));
+const [parsed, emptyKeys] = parse(fs.readFileSync(path.join(__dirname, '../../fixtures/.env'), { encoding: 'utf8' }));
 
 describe('parse', () => {
   it('sets basic environment variable', () => {
