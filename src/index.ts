@@ -1,8 +1,23 @@
 const { parse } = require('./parse');
-const { readFileSync } = require('fs');
+const { readFileSync, accessSync } = require('fs');
 const path = require('path');
 
-const configPath = process.env.ENV_CONFIG_PATH || path.resolve(process.cwd(), '.env');
+function getPath() {
+  if (process.env.ENV_CONFIG_PATH) {
+    return process.env.ENV_CONFIG_PATH;
+  }
+
+  let envPath = path.resolve(process.cwd(), '.env');
+  if (accessSync(envPath)) return envPath;
+
+  envPath = path.resolve(process.cwd(), 'env.conf');
+  if (accessSync(envPath)) {
+    console.warn('env.conf should be renamed to .env');
+    return envPath;
+  }
+}
+
+const configPath = getPath();
 
 let parsed: Map<string, string>;
 let emptyKeys: [string?];

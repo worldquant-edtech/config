@@ -40,7 +40,7 @@ if (config.get('START_DATE', 'date') < Date.now() && config.has('SENTRY_API')) {
 
 Default: `config.get('DB_HOST', "string"): string`
 
-Return the value of the variable or warn if the variable is not defined in the .env or available via `process.env`.
+Return the value of the variable or throws an error if the variable is not defined in the .env or available via `process.env`.
 
 ```
 config.get(
