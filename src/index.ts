@@ -7,20 +7,28 @@ function getPath() {
     return process.env.ENV_CONFIG_PATH;
   }
 
-  let envPath = path.resolve(process.cwd(), '.env');
-  if (accessSync(envPath)) return envPath;
+  const defaultPath = path.resolve(process.cwd(), '.env');
 
-  envPath = path.resolve(process.cwd(), 'env.conf');
-  if (accessSync(envPath)) {
-    console.warn('env.conf should be renamed to .env');
-    return envPath;
-  }
+  try {
+    if (accessSync(defaultPath)) return defaultPath;
+  } catch (e) {}
+
+  const alternativePath = path.resolve(process.cwd(), 'env.conf');
+
+  try {
+    if (accessSync(alternativePath)) {
+      console.warn('env.conf should be renamed to .env');
+      return alternativePath;
+    }
+  } catch (e) {}
+
+  return defaultPath;
 }
-
-const configPath = getPath();
 
 let parsed: Map<string, string>;
 let emptyKeys: [string?];
+
+const configPath = getPath();
 
 try {
   [parsed, emptyKeys] = parse(readFileSync(configPath, { encoding: 'utf8' }));
@@ -31,11 +39,13 @@ try {
 
 export function get(variable: string): string;
 export function get(variable: string, as: 'boolean'): boolean;
-export function get(variable: string, as: 'integer'): number;
-export function get(variable: string, as: 'float'): number;
+export function get(variable: string, as: 'number'): number;
 export function get(variable: string, as: 'date'): Date;
-export function get(variable: string, as: 'json'): any;
-export function get(variable: string, as = 'string'): string | number | boolean | Date | any {
+export function get(variable: string, as: 'json');
+export function get(
+  variable: string,
+  as?: 'boolean' | 'number' | 'date' | 'json' | 'string'
+): string | number | boolean | Date | any {
   if (!variable) {
     throw new Error('Calling get with null or undefined argument');
   }
@@ -47,10 +57,9 @@ export function get(variable: string, as = 'string'): string | number | boolean 
     );
   }
 
-  if (as === 'string') return value;
+  if (as === 'string' || !as) return value;
   if (as === 'boolean') return ['true', '1'].includes(value.toLowerCase());
-  if (as === 'integer') return parseInt(value, 10);
-  if (as === 'float') return parseFloat(value);
+  if (as === 'number') return Number(value);
   if (as === 'date') return new Date(Date.parse(value));
   if (as === 'json') return JSON.parse(value);
 
