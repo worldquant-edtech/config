@@ -38,14 +38,13 @@ try {
 }
 
 export function get(variable: string): string;
-export function get(variable: string, as: 'boolean'): boolean;
 export function get(variable: string, as: 'number'): number;
+export function get(variable: string, as: 'boolean'): boolean;
+export function get(variable: string, as: 'integer'): number;
+export function get(variable: string, as: 'float'): number;
 export function get(variable: string, as: 'date'): Date;
-export function get(variable: string, as: 'json');
-export function get(
-  variable: string,
-  as?: 'boolean' | 'number' | 'date' | 'json' | 'string'
-): string | number | boolean | Date | any {
+export function get(variable: string, as: 'json'): any;
+export function get(variable: string, as = 'string'): string | number | boolean | Date | any {
   if (!variable) {
     throw new Error('Calling get with null or undefined argument');
   }
@@ -57,9 +56,10 @@ export function get(
     );
   }
 
-  if (as === 'string' || !as) return value;
+  if (as === 'string') return value;
   if (as === 'boolean') return ['true', '1'].includes(value.toLowerCase());
-  if (as === 'number') return Number(value);
+  if (['number', 'float', 'integer'].includes(as)) return Number(value);
+  if (as === 'float') return parseFloat(value);
   if (as === 'date') return new Date(Date.parse(value));
   if (as === 'json') return JSON.parse(value);
 

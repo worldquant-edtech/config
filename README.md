@@ -23,7 +23,7 @@ START_DATE=2019-01-30T10:00:48.185Z
 const config = require('@bedrockio/config');
 db.connect({
   host: config.get('DB_HOST'),
-  port: config.get('DB_PORT', 'integer'),
+  port: config.get('DB_PORT', 'number'),
 });
 
 // check if START_DATE is bigger than current time and SENTRY_API has value
@@ -45,7 +45,7 @@ Return the value of the variable or throws an error if the variable is not defin
 ```
 config.get(
   variable,
-  as: "string" | "boolean" | "json" | "integer" | "float" | "date"
+  as?: "string" | "boolean" | "json" | "number" | "date"
 ): string | number | boolean | Date | any
 ```
 
