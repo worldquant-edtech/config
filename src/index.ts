@@ -37,6 +37,14 @@ try {
   throw e;
 }
 
+// Ensure process.env[foo] gets popuplated: 3. party libraries can rely on it
+const allKeys = parsed.keys();
+for (const key of allKeys) {
+  if (!process.env[key]) {
+    process.env[key] = parsed.get(key);
+  }
+}
+
 export function get(variable: string): string;
 export function get(variable: string, as: 'number'): number;
 export function get(variable: string, as: 'boolean'): boolean;
