@@ -7,7 +7,7 @@ import { getAll, get, has } from '../index';
 describe('getAll', () => {
   it('confirm that all keys are return', () => {
     const all = getAll();
-    expect(Object.keys(all)).toHaveLength(17);
+    expect(Object.keys(all)).toHaveLength(18);
     expect(all.EMPTY).toBe(null);
   });
 });
@@ -19,7 +19,11 @@ describe('get', () => {
   });
 
   it('get empty', () => {
-    expect(get('EMPTY')).toEqual(null);
+    expect(get('EMPTY')).toBe(null);
+  });
+
+  it('get empty with quotes', () => {
+    expect(get('EMPTY_WITH_QUOTES')).toBe(null);
   });
 
   it('not defined key', () => {

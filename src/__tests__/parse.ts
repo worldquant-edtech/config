@@ -53,7 +53,7 @@ describe('parse', () => {
   });
 
   it('should mark EMPTY as an empty key', () => {
-    expect(emptyKeys).toEqual(['EMPTY']);
+    expect(emptyKeys).toEqual(['EMPTY', 'EMPTY_WITH_QUOTES']);
   });
 });
 

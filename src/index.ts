@@ -40,7 +40,7 @@ try {
 // Ensure process.env[foo] gets popuplated: 3. party libraries can rely on it
 const allKeys = parsed.keys();
 for (const key of allKeys) {
-  if (!process.env[key]) {
+  if (!process.env[key] && parsed.get(key)) {
     process.env[key] = parsed.get(key);
   }
 }
@@ -58,6 +58,7 @@ export function get(variable: string, as = 'string'): string | number | boolean 
   }
 
   const value = process.env[variable] || parsed.get(variable);
+
   if (value === undefined) {
     throw Error(
       `Configuration variable "${variable}" is not exposed as enviroment variable nor was a default provided in \`.env\``
