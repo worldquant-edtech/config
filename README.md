@@ -65,7 +65,7 @@ Return all defined keys and values as a key value object (from process.env and .
 
 Default: `config.getAllSafe(onlyParsed=false): {[key: string]: string}`
 
-Return all defined safe keys and values as a key value object (from process.env and .env merged), or only from .env if onlyParsed is set to true.
+Return all defined safe (envs. vars that the prefix `SAFE_`) keys and values as a key value object (from process.env and .env merged), or only from .env if onlyParsed is set to true.
 
 #### Environment variable ENV_CONFIG_PATH
 
