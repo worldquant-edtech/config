@@ -5,7 +5,7 @@ export function parse(fileBuffer: string): [Map<string, string>, [string?]] {
   fileBuffer
     .toString()
     .split('\n')
-    .forEach(function(line: String) {
+    .forEach(function (line: String) {
       const keyValueArr = line.match(/^\s*([\w.-]+)\s*=\s*(.*)?\s*$/);
       if (keyValueArr != null) {
         const key = keyValueArr[1];

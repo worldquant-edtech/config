@@ -85,6 +85,17 @@ export function getAll(onlyParsed = false): { [key: string]: string } {
   return result;
 }
 
+export function getAllSafe(onlyParsed = false): { [key: string]: string } {
+  const result: { [key: string]: string } = {};
+  const keys = parsed.keys();
+  for (const key of keys) {
+    if (!key.startsWith('SAFE_')) continue;
+    const value = onlyParsed ? parsed.get(key) : process.env[key] || parsed.get(key);
+    result[key] = value;
+  }
+  return result;
+}
+
 export function has(variable: string): boolean {
   return process.env[variable] !== undefined || !!parsed.get(variable);
 }

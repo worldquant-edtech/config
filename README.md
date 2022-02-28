@@ -59,7 +59,13 @@ Returns true if the variable got value
 
 Default: `config.getAll(onlyParsed=false): {[key: string]: string}`
 
-Return all defined (both from process.env and .env merged) keys and values as a key value object, or only from .env if onlyParsed is set to true.
+Return all defined keys and values as a key value object (from process.env and .env merged), or only from .env if onlyParsed is set to true.
+
+#### getAllSafe
+
+Default: `config.getAllSafe(onlyParsed=false): {[key: string]: string}`
+
+Return all defined safe keys and values as a key value object (from process.env and .env merged), or only from .env if onlyParsed is set to true.
 
 #### Environment variable ENV_CONFIG_PATH
 

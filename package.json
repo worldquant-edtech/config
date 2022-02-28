@@ -1,6 +1,6 @@
 {
   "name": "@bedrockio/config",
-  "version": "2.1.1",
+  "version": "2.2.1",
   "description": "Configurations for node",
   "keywords": [
     "config",
@@ -27,7 +27,6 @@
     "test": "npm run build && jest",
     "prerelease": "npm run build"
   },
-  "dependencies": {},
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "@types/node": "^14.11.10",
