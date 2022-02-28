@@ -2,7 +2,7 @@ const path = require('path');
 
 process.env.ENV_CONFIG_PATH = path.join(__dirname, '../../fixtures/.env');
 
-import { getAll, get, has, getAllSafe } from '../index';
+import { getAll, get, has, getAllPublic } from '../index';
 
 describe('getAll', () => {
   it('confirm that all keys are returned', () => {
@@ -12,11 +12,11 @@ describe('getAll', () => {
   });
 });
 
-describe('getAllSafe', () => {
+describe('getAllPublic', () => {
   it('confirm that all safe keys are returned', () => {
-    const all = getAllSafe();
+    const all = getAllPublic();
     expect(Object.keys(all)).toHaveLength(1);
-    expect(all.SAFE_APP_NAME_NOT_IMPORTANT).toBe('Bedrock Config');
+    expect(all.PUBLIC_APP_NAME_NOT_IMPORTANT).toBe('Bedrock Config');
   });
 });
 

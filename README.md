@@ -61,11 +61,11 @@ Default: `config.getAll(onlyParsed=false): {[key: string]: string}`
 
 Return all defined keys and values as a key value object (from process.env and .env merged), or only from .env if onlyParsed is set to true.
 
-#### getAllSafe
+#### getAllPublic
 
-Default: `config.getAllSafe(onlyParsed=false): {[key: string]: string}`
+Default: `config.getAllPublic(onlyParsed=false): {[key: string]: string}`
 
-Return all defined safe (envs. vars that the prefix `SAFE_`) keys and values as a key value object (from process.env and .env merged), or only from .env if onlyParsed is set to true.
+Return all defined public (envs. vars that the prefix `PUBLIC_`) keys and values as a key value object (from process.env and .env merged), or only from .env if onlyParsed is set to true.
 
 #### Environment variable ENV_CONFIG_PATH
 

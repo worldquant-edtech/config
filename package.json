@@ -1,6 +1,6 @@
 {
   "name": "@bedrockio/config",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "description": "Configurations for node",
   "keywords": [
     "config",
