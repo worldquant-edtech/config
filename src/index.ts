@@ -99,3 +99,10 @@ export function getAllPublic(onlyParsed = false): { [key: string]: string } {
 export function has(variable: string): boolean {
   return process.env[variable] !== undefined || !!parsed.get(variable);
 }
+
+export default {
+  get,
+  getAll,
+  getAllPublic,
+  has,
+}
