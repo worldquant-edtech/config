@@ -105,4 +105,4 @@ export default {
   getAll,
   getAllPublic,
   has,
-}
+};
