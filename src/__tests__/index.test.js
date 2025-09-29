@@ -20,7 +20,7 @@ describe('getAllPublic', () => {
   it('confirm that all safe keys are returned', () => {
     const all = getAllPublic();
     assert.equal(Object.keys(all).length, 1);
-    assert.equal(all.PUBLIC_APP_NAME_NOT_IMPORTANT, 'Bedrock Config');
+    assert.equal(all.PUBLIC_APP_NAME_NOT_IMPORTANT, 'WQ Config');
   });
 });
 
@@ -41,7 +41,7 @@ describe('get', () => {
   it('not defined key', () => {
     assert.throws(() => get('BAD_VALUE'), {
       message:
-        'Configuration variable "BAD_VALUE" is not exposed as enviroment variable nor was a default provided in `.env`',
+        'Configuration variable "BAD_VALUE" is not exposed as environment variable nor was a default provided in `.env`',
     });
   });
 
@@ -58,7 +58,7 @@ describe('get', () => {
   });
 
   it('get value as date', () => {
-    assert.equal(get('DATE', 'date').valueOf(), 1548794502645);
+    assert.equal(get('DATE', 'date').valueOf(), 1759178502645);
   });
 
   it('get value as json', () => {

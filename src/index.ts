@@ -71,7 +71,7 @@ export function get(variable: string, as = 'string'): string | number | boolean 
 
   if (value === undefined) {
     throw Error(
-      `Configuration variable "${variable}" is not exposed as enviroment variable nor was a default provided in \`.env\``
+      `Configuration variable "${variable}" is not exposed as environment variable nor was a default provided in \`.env\``
     );
   }
 
