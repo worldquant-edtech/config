@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
+    "module": "nodenext",
     "moduleResolution": "nodenext",
     "target": "es2017",
-    "lib": ["es2017"],
+    "lib": ["es2017", "dom"],
+    "types": ["node"],
     "sourceMap": false,
     "declaration": true,
     "declarationDir": "types",

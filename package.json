@@ -1,5 +1,5 @@
 {
-  "name": "@bedrockio/config",
+  "name": "@wqlearning/config",
   "version": "2.2.3",
   "description": "Configurations for node",
   "keywords": [
@@ -13,12 +13,12 @@
   "typings": "./types/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/bedrockio/config"
+    "url": "https://github.com/worldquant-edtech/config"
   },
-  "author": "Kaare Larsen",
+  "author": "WorldQuant Learning",
   "license": "MIT",
   "engines": {
-    "node": ">=14.*"
+    "node": ">=16.*"
   },
   "scripts": {
     "cleanup": "rm -rf lib && rm -rf types",
@@ -28,11 +28,11 @@
     "prerelease": "npm run build"
   },
   "devDependencies": {
-    "@types/node": "^14.11.10",
+    "@types/node": "^20.19.17",
     "@typescript-eslint/eslint-plugin": "^5.59.11",
     "@typescript-eslint/parser": "^5.59.11",
-    "eslint": "^8.42.0",
-    "prettier": "^2.8.8",
+    "eslint": "^8.57.1",
+    "prettier": "^3.6.2",
     "tslint-config-prettier": "1.18.0",
     "typescript": "^5.1.3"
   },

@@ -1,6 +1,14 @@
-const { parse } = require('./parse');
-const { readFileSync, accessSync } = require('fs');
-const path = require('path');
+import { parse } from './parse';
+import { readFileSync, accessSync } from 'fs';
+import * as path from 'path';
+
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      [key: string]: string | undefined;
+    }
+  }
+}
 
 function getPath() {
   if (process.env.ENV_CONFIG_PATH) {
@@ -8,21 +16,23 @@ function getPath() {
   }
 
   const defaultPath = path.resolve(process.cwd(), '.env');
-
-  try {
-    if (accessSync(defaultPath)) return defaultPath;
-  } catch (e) {}
-
   const alternativePath = path.resolve(process.cwd(), 'env.conf');
 
+  // Check for .env file first
   try {
-    if (accessSync(alternativePath)) {
+    accessSync(defaultPath);
+    return defaultPath;
+  } catch (e) {
+    // Check for env.conf if .env doesn't exist
+    try {
+      accessSync(alternativePath);
       console.warn('env.conf should be renamed to .env');
       return alternativePath;
+    } catch (e) {
+      // If neither file exists, return default path
+      return defaultPath;
     }
-  } catch (e) {}
-
-  return defaultPath;
+  }
 }
 
 let parsed: Map<string, string>;
