@@ -1,9 +1,9 @@
-# @bedrockio/config
+# @wqlearning/config
 
 ## Install
 
 ```bash
-npm install @bedrockio/config
+npm install @wqlearning/config
 ```
 
 ## Usage
@@ -20,7 +20,7 @@ START_DATE=2019-01-30T10:00:48.185Z
 ```
 
 ```javascript
-const config = require('@bedrockio/config');
+const config = require('@wqlearning/config');
 db.connect({
   host: config.get('DB_HOST'),
   port: config.get('DB_PORT', 'number'),
