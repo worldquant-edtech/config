@@ -12,7 +12,7 @@ Create a `.env` file in the root directory of your project. Add
 environment-specific variables on new lines in the form of `NAME=VALUE`.
 For example:
 
-```dosini
+```ini
 DB_HOST=localhost
 DB_PORT=2000
 SENTRY_API=
