@@ -47,7 +47,7 @@ try {
   throw e;
 }
 
-// Ensure process.env[foo] gets popuplated: 3. party libraries can rely on it
+// Ensure process.env[foo] gets populated: 3. party libraries can rely on it
 const allKeys = parsed.keys();
 for (const key of allKeys) {
   if (!process.env[key] && parsed.get(key)) {
